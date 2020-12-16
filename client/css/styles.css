@@ -1,7 +1,10 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Roboto', sans-serif;
+
 }
+
 
 #wrapper {
 	display: flex;
@@ -31,3 +34,41 @@
 
 }
 
+header{
+	padding: 25px;
+	text-align: center;
+}
+
+
+.table {
+	width: 80vw;
+	margin: 0 auto;
+	background-color: rgb(218, 216, 216);
+}
+
+.avatar {
+	vertical-align: middle;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+}
+
+table{
+	background: rgba( 255, 255, 255, 0.25 );
+	box-shadow: 0 8px 32px 0 rgba(166, 168, 197, 0.37);
+	backdrop-filter: blur( 4px );
+	-webkit-backdrop-filter: blur( 4px );
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+tbody{
+	background-color: #fff;
+}
+
+td{
+	text-align: center;
+  }
+th{
+	text-align: center;
+  }
