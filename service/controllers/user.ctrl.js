@@ -7,7 +7,8 @@ exports.userDbController = {
 
         const keys = Object.keys(req.query);
 
-        if(keys.length >= 1){
+
+        if(keys.length == 1){
             
             if(keys == "gender") {
                 console.log('gender');
@@ -26,12 +27,35 @@ exports.userDbController = {
                 .then(docs => { res.json(docs)})
                 .catch(err => console.log(`Error getting the data from db: ${err}`));
             }
-            else if(keys[0] == 'email' && keys[1] == 'job'){
-                user.find({job:req.query.job, email: req.query.email, gender: req.query.gender})
-                .then(docs => { res.json(docs)})
-                .catch(err => console.log(`Error getting the data from db: ${err}`));
-            }
         }
+        else if(keys.length > 1){
+            let bringUsers;
+            for(let i =0 ; i<keys.length; i++){
+                if(keys[i] == 'email') {
+                    console.log('email');
+                    bringUsers = user.find({email:req.query.email});
+                }
+                else if(keys[i] == 'job') {
+                    console.log('job');
+                    bringUsers = user.find({job:req.params.job});
+                }
+                else if(keys[i] == 'gender'){
+                    console.log('gender');
+                    bringUsers = user.find({gender:req.params.gender});
+                }
+            }
+            bringUsers
+            .then(docs => { res.json(docs)})
+            .catch(err => console.log(`Error getting the data from db: ${err}`));
+        }
+        // else if(keys[0] == 'email' && keys[1] == 'job'){
+        //         const us = user.find({job:req.query.job});
+        //         us.find({email: req.query.email})
+        //         //user.find({job:req.query.job, email: req.query.email, gender: req.query.gender})
+        //         .then(docs => { res.json(docs)})
+        //         .catch(err => console.log(`Error getting the data from db: ${err}`));
+        //     }
+        // }
         else {
             user.find({})
             .then(docs => { res.json(docs)})
