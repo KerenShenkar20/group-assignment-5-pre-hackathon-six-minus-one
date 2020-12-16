@@ -4,11 +4,11 @@ const logger = require("morgan");
 const app = express();
 const port = process.env.PORT || 3000;
 
-const { userRouter } = require("./routers/user.router");
+const { userRouter } = require("./service/routers/user.router");
 //app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
-app.use(logger("dev")); 
+app.use(express.urlencoded({ extended: true }));
+app.use(logger("dev"));
 
 const router = express.Router();
 app.use('/api/users', userRouter);
