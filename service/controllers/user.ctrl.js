@@ -1,11 +1,42 @@
 const user = require('../models/user.model');
-
+const url = require('url');
+const querystring = require('querystring');
  
 exports.userDbController = {
     getUsers(req,res){
-        user.find({})
-        .then(docs => { res.json(docs)})
-        .catch(err => console.log(`Error getting the data from db: ${err}`));
+
+        const keys = Object.keys(req.query);
+
+        if(keys.length >= 1){
+            
+            if(keys == "gender") {
+                console.log('gender');
+                user.find({gender:req.query.gender})
+                .then(docs => { res.json(docs)})
+                .catch(err => console.log(`Error getting the data from db: ${err}`));
+            }
+            else if(keys == "job"){
+                console.log('job');
+                user.find({job:req.query.job})
+                .then(docs => { res.json(docs)})
+                .catch(err => console.log(`Error getting the data from db: ${err}`));
+            }
+            else if(keys == "email") {
+                user.find({email:req.query.email})
+                .then(docs => { res.json(docs)})
+                .catch(err => console.log(`Error getting the data from db: ${err}`));
+            }
+            else if(keys[0] == 'email' && keys[1] == 'job'){
+                user.find({job:req.query.job, email: req.query.email, gender: req.query.gender})
+                .then(docs => { res.json(docs)})
+                .catch(err => console.log(`Error getting the data from db: ${err}`));
+            }
+        }
+        else {
+            user.find({})
+            .then(docs => { res.json(docs)})
+            .catch(err => console.log(`Error getting the data from db: ${err}`));
+        }
     },
     addUser(req,res){
         const newUser = new user({
