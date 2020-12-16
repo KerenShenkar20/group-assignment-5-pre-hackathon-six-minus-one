@@ -1,6 +1,5 @@
 const { Router } = require ('express' );
-const {userController} = require ('./controller' );
-const {userDbController} = require ('./controllers/user.ctrl');
+const {userDbController} = require ('../controllers/user.ctrl');
 const userRouter = new Router();
 
 userRouter.get('/', userDbController.getUsers);
