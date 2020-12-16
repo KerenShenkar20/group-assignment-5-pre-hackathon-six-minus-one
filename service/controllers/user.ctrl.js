@@ -6,8 +6,24 @@ exports.userDbController = {
     getUsers(req,res){
 
         const keys = Object.keys(req.query);
-
-
+        let bringUsers = user.find({});
+        for(let i =0 ; i<keys.length; i++){
+            if(keys[i] == 'email') {
+                console.log('email');
+                bringUsers.find({email:req.query.email});
+            }
+            else if(keys[i] == 'job') {
+                console.log('job');
+                bringUsers.find({job:req.query.job});
+            }
+            else if(keys[i] == 'gender'){
+                console.log('gender');
+                bringUsers.find({gender:req.query.gender});
+            }
+        }
+        bringUsers
+        .then(docs => { res.json(docs)})
+        .catch(err => console.log(`Error getting the data from db: ${err}`));    
         // if(keys.length == 1){
             
         //     if(keys == "gender") {
@@ -29,24 +45,7 @@ exports.userDbController = {
         //     }
         // }
         // else if(keys.length > 1){
-            let bringUsers = user.find({});
-            for(let i =0 ; i<keys.length; i++){
-                if(keys[i] == 'email') {
-                    console.log('email');
-                    bringUsers.find({email:req.query.email});
-                }
-                else if(keys[i] == 'job') {
-                    console.log('job');
-                    bringUsers.find({job:req.query.job});
-                }
-                else if(keys[i] == 'gender'){
-                    console.log('gender');
-                    bringUsers.find({gender:req.query.gender});
-                }
-            }
-            bringUsers
-            .then(docs => { res.json(docs)})
-            .catch(err => console.log(`Error getting the data from db: ${err}`));
+            
         //}
         // else if(keys[0] == 'email' && keys[1] == 'job'){
         //         const us = user.find({job:req.query.job});
@@ -93,12 +92,12 @@ exports.userDbController = {
       .then(docs => { res.json(docs)})
       .catch(err => console.log(`Error updating user from db: ${err}`));  
     },
-  deleteUser(req,res){
-    //user.deleteMany({id:{$in: [1,3,5,7,9]}})
-    user.deleteOne({id:req.params.id})
-    .then(docs => { res.json(docs)})
-      .catch(err => console.log(`Error deleting user from db: ${err}`));  
-  },
+    deleteUser(req,res){
+        //user.deleteMany({id:{$in: [1,3,5,7,9]}})
+        user.deleteOne({id:req.params.id})
+        .then(docs => { res.json(docs)})
+        .catch(err => console.log(`Error deleting user from db: ${err}`));  
+    },
 
 }
 
