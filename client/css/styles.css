@@ -9,14 +9,14 @@
 	display: flex;
 	width: 100vw;
 	height: 100vh;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
 }
 
 .buttons {
 	display: flex;
 	width: 35vw;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-around;
 	padding: 25px;
 }

@@ -1,3 +1,5 @@
+// const { userRouter } = require('../../service/routers/user.router');
+
 $(document).ready(function () {
     getAllUsers();
     operationsListeners();
@@ -45,6 +47,17 @@ function recreateTable(users) {
     }
 }
 
+function cleanUpdateData(data) {
+    const obj = data;
+    for (var propName in obj) {
+        if (obj[propName] === '') {
+          delete obj[propName];
+        }
+      }
+    return obj;
+}
+
+
 function operationsListeners() {
     $("#updateUser").click(() => {
         const id = $("#inputId").val();
@@ -53,7 +66,17 @@ function operationsListeners() {
         const email = $("#inputEmail").val();
         const color = $("#inputColor").val();
         const job = $("#inputJob").val();
-        const gender = $('input[name=gridRadios]:checked').val();
-        updateUserById(id, JSON.stringify([fn,ln,email,gender,color,job]));
+        const gender = $('input[name=gridRadios]:checked').val(); 
+        const userObj = {
+            id,
+            job,
+            email,
+            color,
+            gender,
+            first_name: fn,
+            last_name: ln,
+        }
+        updateUserById(id, cleanUpdateData(userObj) );
     });
 }
+
