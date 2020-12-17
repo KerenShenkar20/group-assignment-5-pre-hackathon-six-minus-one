@@ -26,7 +26,6 @@ app.use((req,res,next)=>{
     next();
  });
 
-
 app.use('/api/users', userRouter);
 
 app.use((err, req, res, next) => {
