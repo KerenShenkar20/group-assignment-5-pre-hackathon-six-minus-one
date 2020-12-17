@@ -1,4 +1,3 @@
-// const { userRouter } = require('../../service/routers/user.router');
 
 $(document).ready(function () {
     getAllUsers();
