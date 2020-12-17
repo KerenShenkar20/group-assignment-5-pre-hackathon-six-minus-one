@@ -45,6 +45,18 @@ function recreateTable(users) {
     }
 }
 
+function getAllUsersByFilter(str) {
+    $.ajax({
+        url: `http://localhost:3000/api/users${str}`,
+        type: 'GET',
+        success: function(users) {
+            recreateTable(users);
+        }
+    });
+}
+
+
+
 function cleanUpdateData(data) {
     const obj = data;
     for (var propName in obj) {
@@ -57,6 +69,24 @@ function cleanUpdateData(data) {
 
 
 function operationsListeners() {
+
+    $("#searchUsers").click(() => {
+        const gender = $("input[name=gridRadios]:checked").val()
+        const email = $("#inputEmail").val();
+        const job = $("#inputJob").val();
+        let str = "?";
+        if(gender)
+        str += `gender=${gender}`;
+        if(email)
+        str += `&email=${email}`;
+        if(job)
+        str += `&job=${job}`;
+        else if(!gender && !email && !job){
+            str = "";
+        }
+        getAllUsersByFilter(str);
+    });
+
     $("#updateUser").click(() => {
         const id = $("#inputId").val();
         const fn = $("#inputFN").val();
@@ -77,4 +107,5 @@ function operationsListeners() {
         updateUserById(id, cleanUpdateData(userObj) );
     });
 }
+
 
