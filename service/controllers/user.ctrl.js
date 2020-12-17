@@ -23,14 +23,14 @@ exports.userDbController = {
     addUser(req,res){
         const newUser = new User({
             //check, validations
-            "id": req.body.id,
-            "first_name": req.body.first_name,
-            "last_name": req.body.last_name,
-            "email": req.body.email,
-            "gender": req.body.gender,
-            "avatar": req.body.avatar,
-            "color": req.body.color,
-            "job": req.body.job
+            id: req.body.id,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            gender: req.body.gender,
+            avatar: req.body.avatar,
+            color: req.body.color,
+            job: req.body.job
         });
         const result = newUser.save();
         if (result){
@@ -45,11 +45,15 @@ exports.userDbController = {
         .then(docs => { res.json(docs)})
         .catch(err => console.log(`Error getting the data from db: ${err}`));
     },
-    updateUser(req,res){
-    //validation
-       User.updateMany({id:req.params.id},{first_name:req.body.first_name,last_name:req.body.last_name,email:req.body.email,gender:req.body.gender,color:req.body.color,job:req.body.job})
-      .then(docs => { res.json(docs)})
-      .catch(err => console.log(`Error updating user from db: ${err}`));  
+    async updateUser(req,res){
+     try{
+        const updatedUser = await User.updateOne({id: req.params.id}, {
+            $set: {...req.body}
+        })
+        res.status(200).json(updatedUser);
+     }catch(err){
+        res.status(500).json({message: err})
+     }
     },
     deleteUser(req,res){
         //user.deleteMany({id:{$in: [1,3,5,7,9]}})
