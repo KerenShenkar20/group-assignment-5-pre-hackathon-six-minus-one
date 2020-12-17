@@ -36,7 +36,7 @@ exports.userDbController = {
         if (result){
             res.json(result)
         } else{
-            res.status(404).send("Error saving a user");
+            res.status(404).send("Error saving a user!");
         }
     },
     getUser(req,res) {
