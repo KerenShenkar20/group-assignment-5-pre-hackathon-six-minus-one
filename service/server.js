@@ -2,15 +2,22 @@ const express = require("express");
 const logger = require("morgan");
 const { userRouter } = require("./routers/user.router");
 const cors = require('cors');
+const path = require('path');
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname + '/../client/')));
+ 
+// @serve client side 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/../client/index.html'));
+});
 
 app.use((req,res,next)=>{
     res.header('Access-Control-Allow-Origin', '*');
@@ -19,8 +26,8 @@ app.use((req,res,next)=>{
     next();
  });
 
-app.use('/api/users', userRouter);
 
+app.use('/api/users', userRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
