@@ -83,3 +83,10 @@ th {
 .custom-select {
 	font-size: .5rem;
 }
+
+
+form{
+	width: 50vw;
+	margin: 0 auto;	
+	margin-bottom: 50px;
+}
