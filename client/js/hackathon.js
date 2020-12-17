@@ -13,6 +13,18 @@ function getAllUsers() {
     });
 }
 
+
+function updateUserById(userId, jsonFile) {
+    $.ajax({
+        url: `http://localhost:3000/api/users/${userId}`,
+        type: 'PUT',
+        data: jsonFile,
+        success: function (response) {
+            console.log(response);
+        }
+    });
+}
+
 function recreateTable(users) {
     $("tbody").empty().remove();
     const usersLen = users.length;
@@ -33,4 +45,15 @@ function recreateTable(users) {
     }
 }
 
-function operationsListeners() {}
+function operationsListeners() {
+    $("#updateUser").click(() => {
+        const id = $("#inputId").val();
+        const fn = $("#inputFN").val();
+        const ln = $("#inputLN").val();
+        const email = $("#inputEmail").val();
+        const color = $("#inputColor").val();
+        const job = $("#inputJob").val();
+        const gender = $('input[name=gridRadios]:checked').val();
+        updateUserById(id, JSON.stringify([fn,ln,email,gender,color,job]));
+    });
+}
