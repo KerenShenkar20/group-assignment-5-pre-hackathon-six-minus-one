@@ -14,17 +14,17 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + '/../client/')));
  
+app.use((req,res,next)=>{
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+ });
+ 
 // @serve client side 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/../client/index.html'));
 });
 
-app.use((req,res,next)=>{
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.set('Content-Type','application/json');
-    next();
- });
 
 app.use('/api/users', userRouter);
 
