@@ -12,80 +12,84 @@
 
 <body>
     <header>
-        <h1>Update User</h1>  
+        <h1>Update User</h1>
     </header>
 
-    <form>
+    <main>
+        <form>
 
-        <div class="form-group row">
-            <label for="inputId" class="col-sm-2 col-form-label">User id</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputId" placeholder="User id">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputFN" class="col-sm-2 col-form-label">First Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputFN" placeholder="First Name">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputLN" class="col-sm-2 col-form-label">Last Name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputFN" placeholder="Last Name">
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-            </div>
-          </div>
-
-        <fieldset class="form-group">
-            <div class="row">
-              <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
-              <div class="col-sm-10">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                  <label class="form-check-label" for="gridRadios1">
-                    Male
-                  </label>
+            <div class="form-group row">
+                <label for="inputId" class="col-sm-2 col-form-label">User id</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputId" placeholder="User id">
                 </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                  <label class="form-check-label" for="gridRadios2">
-                    Female
-                  </label>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputFN" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputFN" placeholder="First Name">
                 </div>
-              </div>
             </div>
-        </fieldset>
 
-        <div class="form-group row">
-            <label for="inputColor" class="col-sm-2 col-form-label">Color</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputColor" placeholder="Color">
+            <div class="form-group row">
+                <label for="inputLN" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputLN" placeholder="Last Name">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group row">
-            <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="inputJob" placeholder="Job">
+            <div class="form-group row">
+                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Update</button>
-          </div>
-        </div>
-      </form>
 
+            <fieldset class="form-group">
+                <div class="row">
+                    <span class="col-form-label col-sm-2 pt-0">Gender</span>
+                    <div class="col-sm-10">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+                                value="option1" checked>
+                            <label class="form-check-label" for="gridRadios1">
+                                Male
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
+                                value="option2">
+                            <label class="form-check-label" for="gridRadios2">
+                                Female
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group row">
+                <label for="inputColor" class="col-sm-2 col-form-label">Color</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputColor" placeholder="Color">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputJob" class="col-sm-2 col-form-label">Job</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputJob" placeholder="Job">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+            </div>
+        </form>
+    </main>
+    
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
     <script src="js/hackathon.js"></script>
 </body>
