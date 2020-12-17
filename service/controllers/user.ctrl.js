@@ -14,6 +14,7 @@ exports.userDbController = {
             else if(keys[i] == 'gender'){
                 findUsers.find({gender:req.query.gender});
             }
+            else{res.status(404).send("Error: wrong key");}
         }
         findUsers
         .then(docs => { res.json(docs)})
@@ -27,7 +28,7 @@ exports.userDbController = {
             "last_name": req.body.last_name,
             "email": req.body.email,
             "gender": req.body.gender,
-            "avatr": req.body.avatr,
+            "avatar": req.body.avatar,
             "color": req.body.color,
             "job": req.body.job
         });
