@@ -3,19 +3,19 @@ const User = require('../models/user.model');
 exports.userDbController = {
     getUsers(req,res){
         const keys = Object.keys(req.query);
-        const bringUsers = User.find({});
+        const findUsers = User.find({});
         for(let i = 0 ; i < keys.length; i++){
             if(keys[i] == 'email') {
-                bringUsers.find({email:req.query.email});
+                findUsers.find({email:req.query.email});
             }
             else if(keys[i] == 'job') {
-                bringUsers.find({job:req.query.job});
+                findUsers.find({job:req.query.job});
             }
             else if(keys[i] == 'gender'){
-                bringUsers.find({gender:req.query.gender});
+                findUsers.find({gender:req.query.gender});
             }
         }
-        bringUsers
+        findUsers
         .then(docs => { res.json(docs)})
         .catch(err => console.log(`Error getting the data from db: ${err}`));    
     },
