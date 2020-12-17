@@ -14,7 +14,6 @@ function getAllUsers() {
     });
 }
 
-
 function updateUserById(userId, jsonFile) {
     $.ajax({
         url: `http://localhost:3000/api/users/${userId}`,
