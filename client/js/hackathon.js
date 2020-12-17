@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 function getAllUsers() {
     $.ajax({
-        url: 'http://localhost:3000/api/users',
+        url: 'https://help-the-helpless.herokuapp.com/api/users',
         type: 'GET',
         success: function (users) {
             recreateTable(users);
@@ -16,7 +16,7 @@ function getAllUsers() {
 
 function updateUserById(userId, jsonFile) {
     $.ajax({
-        url: `http://localhost:3000/api/users/${userId}`,
+        url: `https://help-the-helpless.herokuapp.com/api/users/${userId}`,
         type: 'PUT',
         data: jsonFile,
         success: function (response) {
@@ -47,7 +47,7 @@ function recreateTable(users) {
 
 function getAllUsersByFilter(str) {
     $.ajax({
-        url: `http://localhost:3000/api/users${str}`,
+        url: `https://help-the-helpless.herokuapp.com/api/users${str}`,
         type: 'GET',
         success: function(users) {
             recreateTable(users);
